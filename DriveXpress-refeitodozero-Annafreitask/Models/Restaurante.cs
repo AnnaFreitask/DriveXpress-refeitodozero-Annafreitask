@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DriveXpress_refeitodozero_Annafreitask.Models
 {
-    public class Restaurantes
+    public class Restaurante
     {
         [Key]
         public int Id { get; set; }
@@ -22,8 +22,12 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
 
         public ICollection<Cardapio> Cardapios { get; set; } //restaurante possui uma coleção de produtos
 
-        public ICollection<RestauranteUsuarios> Usuarios { get; set; } //restaurante possui uma coleção de usuarios
-
+        
     }
-
+    public enum Categoria
+    {
+        Gourmet,
+        Doces,
+        Japonesa
+    }
 }
