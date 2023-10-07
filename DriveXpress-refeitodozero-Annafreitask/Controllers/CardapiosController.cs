@@ -10,11 +10,11 @@ namespace DriveXpress_refeitodozero_Annafreitas.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CardapioController : ControllerBase
+    public class CardapiosController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public CardapioController(AppDbContext context)
+        public CardapiosController(AppDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace DriveXpress_refeitodozero_Annafreitas.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            var model = await _context.Cardapio.ToListAsync();
+            var model = await _context.Cardapios.ToListAsync();
             return Ok(model);
         }
 
