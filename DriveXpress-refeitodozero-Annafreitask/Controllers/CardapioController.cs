@@ -19,7 +19,7 @@ namespace DriveXpress_refeitodozero_Annafreitas.Controllers
             _context = context;
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult> GetAll()
         {
             var model = await _context.Cardapio.ToListAsync();
