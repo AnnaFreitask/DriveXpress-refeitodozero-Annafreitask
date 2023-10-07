@@ -10,16 +10,16 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutosController : ControllerBase
+    public class CardapiosController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public ProdutosController(AppDbContext context)
+        public CardapiosController(AppDbContext context)
         {
             _context = context;
         }
 
-        [Authorize(Roles = "Gerente,Funcionario,Cliente")]
+        
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
@@ -27,7 +27,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
             return Ok(model);
         }
 
-        [Authorize(Roles = "Gerente,Funcionario")]
+        
         [HttpPost]
         public async Task<ActionResult> Create(Cardapio model)
         {
@@ -37,7 +37,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
             return CreatedAtAction("GetById", new { id = model.Id }, model);
         }
 
-        [Authorize(Roles = "Gerente,Funcionario")]
+        
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
         {
@@ -50,7 +50,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
             return Ok(model);
         }
 
-        [Authorize(Roles = "Gerente,Funcionario")]
+        
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, Cardapio model)
         {
@@ -67,7 +67,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 
         }
 
-        [Authorize(Roles = "Gerente,Funcionario")]
+        
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
