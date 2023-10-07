@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DriveXpress_refeitodozero_Annafreitask.Models
 {
     [Table("Cardapio")]
-    public class Cardapio
+    public class Cardapio : LinksHATEOS
     {
             [Key]
             public int Id { get; set; }

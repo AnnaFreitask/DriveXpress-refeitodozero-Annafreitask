@@ -44,7 +44,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 
             if (model == null) return NotFound();
 
-
+            GerarLinks(model);
             return Ok(model);
         }
 
@@ -79,5 +79,12 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
             return NoContent();
         }
 
+        private void GerarLinks(Restaurante model)
+        {
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "self", metodo: "GET"));
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "update", metodo: "PUT"));
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "delete", metodo: "DELETE"));
+
+        }
     }
 }

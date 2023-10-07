@@ -10,15 +10,16 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CardapiosController : ControllerBase
+    public class ProdutosController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public CardapiosController(AppDbContext context)
+        public ProdutosController(AppDbContext context)
         {
             _context = context;
         }
 
+        [Authorize(Roles = "Gerente,Funcionario,Cliente")]
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
@@ -26,18 +27,17 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
             return Ok(model);
         }
 
- 
+        [Authorize(Roles = "Gerente,Funcionario")]
         [HttpPost]
         public async Task<ActionResult> Create(Cardapio model)
         {
             _context.Cardapios.Add(model);
             await _context.SaveChangesAsync();
 
-
             return CreatedAtAction("GetById", new { id = model.Id }, model);
         }
 
- 
+        [Authorize(Roles = "Gerente,Funcionario")]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
         {
@@ -46,11 +46,11 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 
             if (model == null) return NotFound();
 
-    
+            GerarLinks(model);
             return Ok(model);
         }
 
-
+        [Authorize(Roles = "Gerente,Funcionario")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, Cardapio model)
         {
@@ -67,7 +67,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 
         }
 
-    
+        [Authorize(Roles = "Gerente,Funcionario")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -79,7 +79,14 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
+        }
 
-    }
+        private void GerarLinks(Cardapio model)
+        {
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "self", metodo: "GET"));
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "update", metodo: "PUT"));
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "delete", metodo: "DELETE"));
+
+        }
+    }
 }
