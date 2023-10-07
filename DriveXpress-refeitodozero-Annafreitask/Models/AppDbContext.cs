@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DriveXpress_refeitodozero_Annafreitask.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DriveXpress_refeitodozero_Annafreitask.Models
 {
@@ -8,7 +9,9 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
         {
 
         }
+
         public DbSet<Restaurante> Restaurantes { get; set; }
-        public DbSet<Cardapio> Cardapios { get; set; }
+        public DbSet<Cardapio> Cardapio { get; set; }
+
     }
 }
