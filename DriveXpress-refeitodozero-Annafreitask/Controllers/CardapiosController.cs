@@ -26,17 +26,18 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
             return Ok(model);
         }
 
-
+ 
         [HttpPost]
         public async Task<ActionResult> Create(Cardapio model)
         {
             _context.Cardapios.Add(model);
             await _context.SaveChangesAsync();
 
+
             return CreatedAtAction("GetById", new { id = model.Id }, model);
         }
 
-
+ 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
         {
@@ -45,7 +46,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 
             if (model == null) return NotFound();
 
-
+    
             return Ok(model);
         }
 
@@ -66,7 +67,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 
         }
 
-
+    
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -78,7 +79,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
+        }
 
-    }
+    }
 }
