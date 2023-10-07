@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Threading.Tasks;
 
-namespace DriveXpress_refeitodozero_Annafreitas.Controllers
+namespace DriveXpress_refeitodozero_Annafreitask.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,6 +24,60 @@ namespace DriveXpress_refeitodozero_Annafreitas.Controllers
         {
             var model = await _context.Cardapios.ToListAsync();
             return Ok(model);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> Create(Cardapio model)
+        {
+            _context.Cardapios.Add(model);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetById", new { id = model.Id }, model);
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetById(int id)
+        {
+            var model = await _context.Cardapios
+                 .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (model == null) return NotFound();
+
+
+            return Ok(model);
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(int id, Cardapio model)
+        {
+            if (id != model.Id) return BadRequest();
+            var modeloDb = await _context.Cardapios.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (modeloDb == null) return NotFound();
+
+            _context.Cardapios.Update(model);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var model = await _context.Cardapios.FindAsync(id);
+
+            if (model == null) return NotFound();
+
+            _context.Cardapios.Remove(model);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
     }
