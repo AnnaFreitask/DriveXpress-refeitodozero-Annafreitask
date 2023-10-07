@@ -23,7 +23,8 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
         [Required]
         public int RestauranteId { get; set; } //produto pertence a um unico restaurante (produto associado a Key de restaurante)
 
-      
+        public Produto Produtos { get; set; } //retorna produtos do restaurante
+
     }
     public enum TipoProduto
     {
