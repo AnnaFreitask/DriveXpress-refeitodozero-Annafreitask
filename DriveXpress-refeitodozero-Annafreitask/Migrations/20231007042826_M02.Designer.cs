@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DriveXpress_refeitodozero_Annafreitask.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231007041440_M02")]
+    [Migration("20231007042826_M02")]
     partial class M02
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
