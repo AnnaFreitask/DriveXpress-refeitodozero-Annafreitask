@@ -26,7 +26,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
 
         //public ICollection<Pedido> Pedidos { get; set; } //restaurante possui uma coleção de produtos
 
-        public ICollection<RestaurantesUsuarios> Usuarios { get; set; } //restaurante possui uma coleção de usuarios
+        public ICollection<RestauranteUsuarios> Usuarios { get; set; } //restaurante possui uma coleção de usuarios
 
     }
     public enum Categoria
