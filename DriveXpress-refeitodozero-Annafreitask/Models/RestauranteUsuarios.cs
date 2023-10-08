@@ -15,13 +15,11 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
     {
 
         public int RestauranteId { get; set; }
-
         public Restaurante Restaurante { get; set; }
 
 
 
         public int UsuarioId { get; set; }
-
         public Usuario Usuario { get; set; }
 
     }
