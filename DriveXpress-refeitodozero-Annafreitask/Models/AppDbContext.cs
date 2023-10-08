@@ -12,14 +12,14 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<RestauranteUsuarios>()
+            builder.Entity<RestaurantesUsuarios>()
                 .HasKey(c => new { c.RestauranteId, c.UsuarioId });
 
-            builder.Entity<RestauranteUsuarios>()
+            builder.Entity<RestaurantesUsuarios>()
                 .HasOne(c => c.Restaurante).WithMany(c => c.Usuarios)
                 .HasForeignKey(c => c.RestauranteId);
 
-            builder.Entity<RestauranteUsuarios>()
+            builder.Entity<RestaurantesUsuarios>()
                 .HasOne(c => c.Usuario).WithMany(c => c.Restaurantes)
                 .HasForeignKey(c => c.UsuarioId);
         }
@@ -27,7 +27,11 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
         public DbSet<Restaurante> Restaurantes { get; set; }
         public DbSet<Cardapio> Cardapios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<RestauranteUsuarios> RestauranteUsuarios { get; set; }
+        public DbSet<RestaurantesUsuarios> RestaurantesUsuarios { get; set; }
+
+
+
+
 
     }
 }

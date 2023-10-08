@@ -12,8 +12,8 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
 
     namespace DriveXpress_refeitodozero_Annafreitask.Models
     {
-        [Table("Usuarios")]
-        public class Usuario : LinksHATEOS
+        [Table("Usuario")]
+        public class Usuario: LinksHATEOS
         {
             [Key]
             public int Id { get; set; }
@@ -27,7 +27,7 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
             [Required]
             public PerfilUsuario Perfil { get; set; }
 
-            public ICollection<RestauranteUsuarios> Restaurantes { get; set; } //usuario possui uma coleção de restaurantes. usuario possui varios restaurantes
+            public ICollection<RestaurantesUsuarios> Restaurantes { get; set; } //usuario possui uma coleção de restaurantes. usuario possui varios restaurantes
 
         }
 
@@ -40,5 +40,6 @@ namespace DriveXpress_refeitodozero_Annafreitask.Models
             [Display(Name = "Gerente")]
             Gerente
         }
-
     }
+
+}
